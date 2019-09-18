@@ -78,7 +78,7 @@ namespace Entidades
         /// <returns>Retorna el numero expresado en binario, de ser posible. Caso contrario retorna 'Valor Invalido'</returns>
         public string DecimalBinario(double numero)
         {
-            string binario = "";
+            string binario = "Valor Invalido";
 
             if (numero >= 0)
             {
@@ -184,7 +184,6 @@ namespace Entidades
             }
 
             return -1;
-
         }
 
         /// <summary>

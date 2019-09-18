@@ -41,7 +41,11 @@ namespace MiCalculadora
         {
             Numero ConvertirABinario = new Numero();
 
-            this.lblResultado.Text = ConvertirABinario.DecimalBinario(Convert.ToDouble(this.lblResultado.Text));
+            if (!double.TryParse(this.lblResultado.Text, out double resultado))
+                resultado = -1;
+
+            this.lblResultado.Text = ConvertirABinario.DecimalBinario(resultado);
+            
         }
 
         /// <summary>
