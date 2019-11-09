@@ -6,6 +6,6 @@ TP 1 - Terminado y Documentado.
 
 TP 2 - Terminado y Documentado.
 
-TP 3 - Pendiente.
+TP 3 - Terminado y Documentado.
 
 TP 4 - Pendiente.
