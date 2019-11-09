@@ -89,7 +89,7 @@ namespace EntidadesInstanciables
 
             for (i = 0; i < 2; i++)
             {
-                this.clasesDelDia.Enqueue((Universidad.EClases)Profesor.random.Next(0,3));
+                this.clasesDelDia.Enqueue((Universidad.EClases)Profesor.random.Next(0, 4));
             }
         }
         #endregion
