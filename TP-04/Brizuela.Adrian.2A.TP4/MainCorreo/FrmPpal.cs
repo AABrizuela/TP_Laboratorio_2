@@ -16,22 +16,13 @@ namespace MainCorreo
     {
         Correo correo;
         Paquete paquete;
-        //private event Paquete.DelegadoEstado InformaEstado;
+        
         public FrmPpal()
         {
             InitializeComponent();
             correo = new Correo();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblEstadoIngresado_Click(object sender, EventArgs e)
-        {
-
-        }
+        
         private void FrmPpal_FormClosing(object sender, FormClosingEventArgs e)
         {
             correo.FinEntregas();
@@ -100,38 +91,25 @@ namespace MainCorreo
         {
             if (elemento != null)
             {
-                if (elemento != null)
+                if (elemento is Paquete)
                 {
-                    if (elemento is Paquete)
-                    {
-                        rtbMostrar.Text = ((Paquete)elemento).ToString();
-                    }
-                    else if (elemento is Correo)
-                    {
-
-                        rtbMostrar.Text = ((Correo)elemento).MostrarDatos((Correo)elemento);
-                    }
-                    string nombreArchivo = "salida";
-                    rtbMostrar.Text.Guardar(nombreArchivo);
+                    rtbMostrar.Text = ((Paquete)elemento).ToString();
                 }
+                else if (elemento is Correo)
+                {
+
+                    rtbMostrar.Text = ((Correo)elemento).MostrarDatos((Correo)elemento);
+                }
+                string nombreArchivo = "salida";
+                rtbMostrar.Text.Guardar(nombreArchivo);
             }
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void btnMostrarTodos_Click(object sender, EventArgs e)
         {
             this.MostrarInformacion<List<Paquete>>((IMostrar<List<Paquete>>)correo);
         }
-
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
-        }
-
+        
         private void mostrarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.MostrarInformacion<Paquete>((IMostrar<Paquete>)lstEstadoEntregado.SelectedItem);

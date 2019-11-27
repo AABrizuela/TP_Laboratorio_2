@@ -71,9 +71,8 @@ namespace Entidades
         {
             do
             {
-
                 this.InformaEstado.Invoke(this, null);
-                Thread.Sleep(10000);
+                Thread.Sleep(4000);
                 if (this.Estado == EEstado.ingresado)
                 {
                     this.Estado = EEstado.en_viaje;

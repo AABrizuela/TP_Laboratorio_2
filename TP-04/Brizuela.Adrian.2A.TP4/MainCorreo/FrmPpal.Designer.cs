@@ -65,8 +65,7 @@
             this.groupBox1.Size = new System.Drawing.Size(782, 317);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Estado Paquetes";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            this.groupBox1.Text = "Estado Paquetes";            
             // 
             // lblEstadoEntregado
             // 
@@ -219,8 +218,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmPpal";
-            this.Text = "Correo UTN por Adrian.Brizuela.2A";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Text = "Correo UTN por Adrian.Brizuela.2A";            
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
