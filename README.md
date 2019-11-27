@@ -8,4 +8,4 @@ TP 2 - Terminado y Documentado.
 
 TP 3 - Terminado y Documentado.
 
-TP 4 - Pendiente.
+TP 4 - Terminado y Documentado.
