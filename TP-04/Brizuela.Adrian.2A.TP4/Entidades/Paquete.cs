@@ -17,7 +17,6 @@ namespace Entidades
         #endregion
 
         #region Propiedades
-
         public string DireccionEntrega
         {
             get
@@ -53,20 +52,21 @@ namespace Entidades
                 this.trackingID = value;
             }
         }
-
-
-
         #endregion
 
-
-        #region Metodos
+        #region Constructores
         public Paquete(string direccionEntrega, string trackingID)
         {
             this.DireccionEntrega = direccionEntrega;
             this.TrackingID = trackingID;
             this.Estado = EEstado.ingresado;
         }
+        #endregion
 
+        #region Metodos
+        /// <summary>
+        /// Hace que el paquete cambie de forma
+        /// </summary>
         public void MockCicloDeVida()
         {
             do
@@ -94,14 +94,38 @@ namespace Entidades
             {
                 throw e;
             }
+        }        
+
+        /// <summary>
+        /// Muestra los datos del paquete
+        /// </summary>
+        /// <param name="elemento">paquete a mostrar datos</param>
+        /// <returns>cadena con los datos del paquete</returns>
+        public string MostrarDatos(IMostrar<Paquete> elemento)
+        {
+
+            return string.Format("{0} para {1} ({2})", ((Paquete)elemento).TrackingID, ((Paquete)elemento).DireccionEntrega, ((Paquete)elemento).Estado);
         }
 
+        #endregion
+
+        #region Sobrecargas
+        /// <summary>
+        /// sobrecarga ToString para la clase paquete
+        /// </summary>
+        /// <returns>retorna string con datos del paquete</returns>
         public override string ToString()
         {
 
             return this.MostrarDatos(this);
         }
 
+        /// <summary>
+        /// Sobrecarga del operador == , si dos paquetes tiene el mismo Tracking ID estos son iguales
+        /// </summary>
+        /// <param name="p1">paquete 1</param>
+        /// <param name="p2">paquete 2</param>
+        /// <returns>true si son iguales , false si no</returns>
         public static bool operator ==(Paquete p1, Paquete p2)
         {
             if (p1.TrackingID == p2.TrackingID)
@@ -119,12 +143,6 @@ namespace Entidades
             }
             return true;
         }
-        public string MostrarDatos(IMostrar<Paquete> elemento)
-        {
-
-            return string.Format("{0} para {1} ({2})", ((Paquete)elemento).TrackingID, ((Paquete)elemento).DireccionEntrega, ((Paquete)elemento).Estado);
-        }
-
         #endregion
 
         #region Eventos
