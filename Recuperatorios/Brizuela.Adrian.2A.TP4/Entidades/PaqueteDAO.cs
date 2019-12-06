@@ -37,9 +37,10 @@ namespace Entidades
         {            
             bool retorno = false;
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("INSERT INTO dbo.Paquetes (direccionEntrega,trackingID,alumno) VALUES('{0}','{1}','{2}')", p.DireccionEntrega, p.TrackingID, "Brizuela Adrian");
+            
             try
-            {                
+            {
+                sb.AppendFormat("INSERT INTO dbo.Paquetes (direccionEntrega,trackingID,alumno) VALUES('{0}','{1}','{2}')", p.DireccionEntrega, p.TrackingID, "Brizuela Adrian");
                 comando.CommandText = sb.ToString();
                 conexion.Open();
                 if (comando.ExecuteNonQuery() > 0)
@@ -48,9 +49,9 @@ namespace Entidades
                 }
                 conexion.Close();
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                throw e;
+                throw ex;
             }
             return retorno;
         }

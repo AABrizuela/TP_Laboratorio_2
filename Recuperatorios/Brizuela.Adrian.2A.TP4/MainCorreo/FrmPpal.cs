@@ -29,14 +29,19 @@ namespace MainCorreo
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            paquete = new Paquete(txtDireccion.Text, mtxtTrackingID.Text);
-            paquete.InformaEstado += paq_InformaEstado;
+        {            
             try
             {
+                paquete = new Paquete(txtDireccion.Text, mtxtTrackingID.Text);
+                paquete.InformaEstado += paq_InformaEstado;
+
                 correo += paquete;
-            }
+            }            
             catch (TrackingIdRepetidoException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

@@ -76,19 +76,26 @@ namespace Entidades
         /// <param name="p">pquete</param>
         /// <returns>correo con paquete agregado o no</returns>
         public static Correo operator +(Correo c, Paquete p)
-        {
-
-            foreach (Paquete aux in c.Paquetes)
+        {            
+            try
             {
-                if (aux == p)
+                foreach (Paquete aux in c.Paquetes)
                 {
-                    throw new TrackingIdRepetidoException("Paquete repetido");
+                    if (aux == p)
+                    {
+                        throw new TrackingIdRepetidoException("Paquete repetido");
+                    }
                 }
+                c.Paquetes.Add(p);
+
+                Thread hilo = new Thread(p.MockCicloDeVida);
+                c.mockPaquetes.Add(hilo);
+                hilo.Start();
             }
-            c.Paquetes.Add(p);
-            Thread hilo = new Thread(p.MockCicloDeVida);
-            c.mockPaquetes.Add(hilo);
-            hilo.Start();
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
             return c;
         }

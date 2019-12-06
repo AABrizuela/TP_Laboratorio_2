@@ -68,25 +68,24 @@ namespace Entidades
         /// Hace que el paquete cambie de forma
         /// </summary>
         public void MockCicloDeVida()
-        {
-            do
-            {
-                this.InformaEstado.Invoke(this, null);
-                Thread.Sleep(4000);
-                if (this.Estado == EEstado.ingresado)
-                {
-                    this.Estado = EEstado.en_viaje;
-                }
-                else
-                {
-                    this.Estado = EEstado.entregado;
-                }
-
-
-            } while (this.Estado != EEstado.entregado);
-            this.InformaEstado.Invoke(this, null);
+        {            
             try
             {
+                do
+                {
+                    this.InformaEstado.Invoke(this, null);
+                    Thread.Sleep(4000);
+                    if (this.Estado == EEstado.ingresado)
+                    {
+                        this.Estado = EEstado.en_viaje;
+                    }
+                    else
+                    {
+                        this.Estado = EEstado.entregado;
+                    }
+                } while (this.Estado != EEstado.entregado);
+                this.InformaEstado.Invoke(this, null);
+
                 PaqueteDAO.Insertar(this);
             }
             catch (Exception e)
@@ -102,7 +101,6 @@ namespace Entidades
         /// <returns>cadena con los datos del paquete</returns>
         public string MostrarDatos(IMostrar<Paquete> elemento)
         {
-
             return string.Format("{0} para {1} ({2})", ((Paquete)elemento).TrackingID, ((Paquete)elemento).DireccionEntrega, ((Paquete)elemento).Estado);
         }
 
