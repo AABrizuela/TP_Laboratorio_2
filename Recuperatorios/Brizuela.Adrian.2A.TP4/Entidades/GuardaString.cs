@@ -18,21 +18,22 @@ namespace Entidades
         /// <returns>true si pudo guardar ,false si no</returns>
         public static bool Guardar(this string texto, string archivo)
         {
+            bool ret = false;
             try
             {
-
                 using (StreamWriter guardar = new StreamWriter(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\" + archivo + ".txt", true))
                 {
                     guardar.WriteLine(texto);
                     guardar.Close();
                 }
+                ret = true;                
+            }
+            catch (Exception ex)
+            {                
+                throw ex;
+            }
 
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return ret;
         }
         #endregion
     }
